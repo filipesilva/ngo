@@ -8,7 +8,7 @@ const noNgoDir = path.join(__dirname, 'dist-no-ngo');
 const ngoSizes = {};
 const noNgoSizes = {};
 const fileSize = (filename, hash) => hash[filename] = fs.statSync(filename).size;
-const sizeDiff = (oldSize, newSize) => Math.round((1 - oldSize / newSize) * 10000) / 100;
+const sizeDiff = (oldSize, newSize) => Math.round(((newSize - oldSize) / oldSize) * 10000) / 100;
 
 fs.readdirSync(ngoDir).forEach((file) => fileSize(path.join(ngoDir, file), ngoSizes))
 fs.readdirSync(noNgoDir).forEach((file) => fileSize(path.join(noNgoDir, file), noNgoSizes))
@@ -46,8 +46,12 @@ const diffGzTotal = sizeDiff(noNgoGzTotal, ngoGzTotal);
 
 console.log(`\nTotal: ${noNgoTotal} -> ${ngoTotal} bytes (${diffTotal}%), ${noNgoGzTotal} -> ${ngoGzTotal} bytes gzipped (${diffGzTotal}%)`);
 
-if (diffTotal > -1 && diffTotal < 1) {
-  throw new Error('Total difference of size is too small, ngo-loader does not seem to have made any optimizations');
+if (diffTotal > -1 && diffTotal < 0) {
+  throw new Error('Total size difference is too small, ngo does not seem to have made any optimizations.');
+}
+
+if (diffTotal > 1) {
+  throw new Error('Total size difference is positive, ngo made the bundle bigger.');
 }
 
 console.log('\n');
