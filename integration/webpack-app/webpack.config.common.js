@@ -53,6 +53,7 @@ module.exports = {
       threshold: 0,
       minRatio: 0.8
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       mangle: { screw_ie8: true },
       compress: { screw_ie8: true, warnings: false, pure_getters: true },
@@ -65,5 +66,16 @@ module.exports = {
       { test: /\.css$/, loader: 'raw-loader' },
       { test: /\.html$/, loader: 'raw-loader' }
     ]
+  },
+  node: {
+    fs: 'empty',
+    global: false,
+    crypto: 'empty',
+    tls: 'empty',
+    net: 'empty',
+    process: true,
+    module: false,
+    clearImmediate: false,
+    setImmediate: false
   }
 };
