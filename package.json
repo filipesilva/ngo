@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "rimraf dist/* && tsc -p tsconfig.lib.json",
+    "build:watch": "rimraf dist/* && tsc -w -p tsconfig.lib.json",
     "test": "node ./scripts/run-spec.js",
     "debug": "node --inspect --debug-brk ./scripts/run-spec.js",
     "integration": "npm run build && npm run integration:webpack",
