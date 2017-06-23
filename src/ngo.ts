@@ -59,7 +59,6 @@ export function ngo(options: NgoOptions): { content: string, sourceMap: RawSourc
         source: inputFilePath,
         file: outputFilePath ? `${outputFilePath}.map` : null,
         includeContent: true,
-        hires: true,
       }),
     };
   } else {

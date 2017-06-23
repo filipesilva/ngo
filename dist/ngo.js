@@ -44,7 +44,6 @@ function ngo(options) {
                 source: inputFilePath,
                 file: outputFilePath ? outputFilePath + ".map" : null,
                 includeContent: true,
-                hires: true,
             }),
         };
     }
