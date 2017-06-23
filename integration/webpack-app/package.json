@@ -3,9 +3,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "rimraf dist && webpack -p --hide-modules",
-    "build-no-ngo": "rimraf dist-no-ngo && webpack -p --config=webpack.config.no-ngo.js --hide-modules",
-    "build-old-ngo": "rimraf dist-old-ngo && webpack -p --config=webpack.config.old-ngo.js --hide-modules",
+    "build": "rimraf dist && webpack --hide-modules",
+    "build-no-ngo": "rimraf dist-no-ngo && webpack --config=webpack.config.no-ngo.js --hide-modules",
+    "build-old-ngo": "rimraf dist-old-ngo && webpack --config=webpack.config.old-ngo.js --hide-modules",
     "serve": "lite-server --baseDir=dist",
     "pree2e": "npm run build",
     "e2e": "concurrently \"npm run serve\" \"npm run protractor\" --kill-others --success first",
