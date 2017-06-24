@@ -12,6 +12,7 @@ jobs:
       - run: npm run lint
       - run: npm run test
       - run: xvfb-run -a npm run integration
+      - run: npm run benchmark
       - save_cache:
           key: ngo-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
