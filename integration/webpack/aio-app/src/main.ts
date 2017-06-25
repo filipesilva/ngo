@@ -1,6 +1,3 @@
-import 'zone.js/dist/zone';  // Included with Angular CLI.
-import './environments/environment';
-
 import { ApplicationRef, enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
