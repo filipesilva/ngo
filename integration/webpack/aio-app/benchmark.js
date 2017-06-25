@@ -18,9 +18,9 @@ let noNgoTotal = 0;
 let ngoGzTotal = 0;
 let noNgoGzTotal = 0;
 
-console.log('\n');
+console.log('');
 console.log('aio-app size benchmark:');
-console.log('\n');
+console.log('');
 
 Object.keys(ngoSizes)
   .filter((filename) => filename.endsWith('.js'))
@@ -49,13 +49,13 @@ const diffGzTotal = sizeDiff(noNgoGzTotal, ngoGzTotal);
 console.log(`Total: ${noNgoTotal} -> ${ngoTotal} bytes (${diffTotal}%), ${noNgoGzTotal} -> ${ngoGzTotal} bytes gzipped (${diffGzTotal}%)`);
 
 if (diffTotal > -1 && diffTotal < 0) {
-  console.log('\n');
+  console.log('');
   throw new Error('Total size difference is too small, ngo does not seem to have made any optimizations.');
 }
 
 if (diffTotal > 1) {
-  console.log('\n');
+  console.log('');
   throw new Error('Total size difference is positive, ngo made the bundle bigger.');
 }
 
-console.log('\n');
+console.log('');

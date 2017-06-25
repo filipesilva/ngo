@@ -18,9 +18,9 @@ let oldNgoTotal = 0;
 let ngoGzTotal = 0;
 let oldNgoGzTotal = 0;
 
-console.log('\n');
+console.log('');
 console.log('aio-app parity benchmark:');
-console.log('\n');
+console.log('');
 
 Object.keys(ngoSizes)
   .filter((filename) => filename.endsWith('.js'))
@@ -49,8 +49,8 @@ const diffGzTotal = sizeDiff(oldNgoGzTotal, ngoGzTotal);
 console.log(`Total: ${oldNgoTotal} -> ${ngoTotal} bytes (${diffTotal}%), ${oldNgoGzTotal} -> ${ngoGzTotal} bytes gzipped (${diffGzTotal}%)`);
 
 if (diffTotal > 2) {
-  console.log('\n');
+  console.log('');
   throw new Error('Total size difference is positive and more than 2%, new ngo performed worse than old ngo.');
 }
 
-console.log('\n');
+console.log('');
