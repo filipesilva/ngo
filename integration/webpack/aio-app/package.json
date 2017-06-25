@@ -11,7 +11,8 @@
     "e2e": "concurrently \"npm run serve\" \"npm run protractor\" --kill-others --success first",
     "preprotractor": "webdriver-manager update",
     "protractor": "protractor protractor.config.js",
-    "benchmark": "npm run build && npm run build-no-ngo && npm run build-old-ngo && node benchmark.js && node parity-benchmark.js"
+    "benchmark": "npm run build && npm run build-no-ngo && npm run build-old-ngo && node benchmark.js && node parity-benchmark.js",
+    "reinstall-ngo": "rimraf node_modules/ngo && npm i ../../../"
   },
   "dependencies": {
     "@angular/animations": "^4.2.3",
