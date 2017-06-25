@@ -71,7 +71,7 @@ module.exports = {
   },
   node: {
     fs: 'empty',
-    global: false,
+    global: true,
     crypto: 'empty',
     tls: 'empty',
     net: 'empty',
