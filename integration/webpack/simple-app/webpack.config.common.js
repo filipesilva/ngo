@@ -26,7 +26,10 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js']
   },
-  entry: path.join(src, 'main.ts'),
+  entry: {
+    main: path.join(src, 'main.ts'),
+    polyfills: path.join(src, 'polyfills.ts'),
+  },
   output: {
     path: dist,
     filename: '[name].bundle.js'
