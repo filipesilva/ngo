@@ -17,8 +17,10 @@ let ngoTotal = 0;
 let oldNgoTotal = 0;
 let ngoGzTotal = 0;
 let oldNgoGzTotal = 0;
-console.log('\n\nparity benchmark:\n');
 
+console.log('\n');
+console.log('simple-app parity benchmark:');
+console.log('\n');
 
 Object.keys(ngoSizes)
   .filter((filename) => filename.endsWith('.js'))
@@ -44,14 +46,11 @@ Object.keys(ngoSizes)
 const diffTotal = sizeDiff(oldNgoTotal, ngoTotal);
 const diffGzTotal = sizeDiff(oldNgoGzTotal, ngoGzTotal);
 
-console.log(`\nTotal: ${oldNgoTotal} -> ${ngoTotal} bytes (${diffTotal}%), ${oldNgoGzTotal} -> ${ngoGzTotal} bytes gzipped (${diffGzTotal}%)`);
+console.log(`Total: ${oldNgoTotal} -> ${ngoTotal} bytes (${diffTotal}%), ${oldNgoGzTotal} -> ${ngoGzTotal} bytes gzipped (${diffGzTotal}%)`);
 
-if (diffTotal > -1 && diffTotal < 0) {
-  // throw new Error('Total size difference is too small, ngo does not seem to have made any optimizations.');
-}
-
-if (diffTotal > 1) {
-  // throw new Error('Total size difference is positive, new ngo performed worse than old ngo.');
+if (diffTotal > 2) {
+  console.log('\n');
+  throw new Error('Total size difference is positive and more than 2%, new ngo performed worse than old ngo.');
 }
 
 console.log('\n');
