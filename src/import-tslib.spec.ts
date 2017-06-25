@@ -78,7 +78,7 @@ describe('import-tslib', () => {
       exports.meaning = 42;
     `;
     const output = stripIndent`
-      var __extends = require("tslib").__extends;
+      var __extends = /*@__PURE__*/ require("tslib").__extends;
       exports.meaning = 42;
     `;
 
