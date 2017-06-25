@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ngToolsWebpack = require('@ngtools/webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 
@@ -32,9 +32,9 @@ module.exports = {
     filename: '[name].bundle.js'
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(src, 'index.html')
-    }),
+    new CopyWebpackPlugin([
+      { from: path.join(src, 'index.html') }
+    ]),
     new ngToolsWebpack.AotPlugin({
       tsConfigPath: path.join(src, 'tsconfig.json')
     }),
