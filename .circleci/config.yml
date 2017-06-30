@@ -15,7 +15,15 @@ jobs:
       - run: yarn
       - run: yarn lint
       - run: yarn test
-      - run: xvfb-run -a yarn integration
+      # - run: xvfb-run -a yarn integration
+      - run:
+          # add `export DISPLAY=:99.0` to commands that use this display.
+          name: Running X virtual framebuffer
+          command: Xvfb :99 -screen 0 1280x1024x24
+          background: true
+      - run: |
+          export DISPLAY=:99.0
+          yarn integration
       - run: yarn benchmark
       - save_cache:
           key: ngo-{{ .Branch }}-{{ checksum "yarn.lock" }}
